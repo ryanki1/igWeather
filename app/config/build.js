@@ -3,14 +3,22 @@ var IG_Weather = {
 };
 
 (function(options){
-  if (options.prod) {
+  if (options.env === "prod") {
 
-    options.weatherUrl = "api.openweathermap.org/data/2.5/weather?q=<city>,uk";
-
+    // Bedford, EN
+    options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=52.1&lon=-0.4&cnt=10&callback=JSON_CALLBACK";
+    // Freiburg, DE
+    //options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=47.9&lon=7.8&cnt=10&callback=JSON_CALLBACK";
+    // Sao Paulo, BR
+    //options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=-23.5&lon=-46.6&cnt=10&callback=JSON_CALLBACK";
   }
   else {
 
-    options.weatherUrl = "api.openweathermap.org/data/2.5/weather?q=<city>,uk";
-
+    // Bedford, EN
+    options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=52.1&lon=-0.4&cnt=10&callback=JSON_CALLBACK";
+    // Freiburg, DE
+    //options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=47.9&lon=7.8&cnt=10&callback=JSON_CALLBACK";
+    // Sao Paulo, BR
+    //options.weatherUrl = "http://api.openweathermap.org/data/2.3/find/city?lat=-23.5&lon=-46.6&cnt=10&callback=JSON_CALLBACK";
   }
-})(IG_Weather),
+})(IG_Weather);

@@ -10,45 +10,29 @@
 <body ng-app="igWeather">
     <div id="pageContainer" ng-controller="landingCtrl">
         <h1>{{title}}</h1>
-        <ul>
-            <li>
-                <div class="header" ng-model="london" ng-click="london = ! london">
-                    London
-                <div>
-                <div ng-show="london">
-                    Temperature: 12 degrees
-                </div>
-            </li>
-            <li>
-                <div class="header" ng-model="luton" ng-click="luton = ! luton">
-                    Luton
-                </div>
-                <div ng-show="luton">
-                    Temperature: 11 degrees
-                </div>
-            </li>   
-            <li>
-                <div class="header" ng-model="manchester" ng-click="manchester = ! manchester">
-                    Manchester
-                </div>
-                <div ng-show="manchester">
-                    Temperature: 10 degrees
-                </div>
-            </li>   
-            <li>
-                <div class="header" ng-model="birmingham" ng-click="birmingham = ! birmingham">
-                    Birmingham
-                </div>
-                <div ng-show="birmingham">
-                    Temperature: 9 degrees
-                </div>
-            </li>
-     
-        </ul>
+        <div class="inputGroup">
+            
+        </div>
+        <select ng-model="city" ng-options="city.name for city in cities | orderBy:'main.temp':!tempDesc" ng-click="details(city)">
+            <option value="">
+                Please select a city
+            </option>           
+        </select>
+        <label for="tempDescCheckbox">Sort Cities by Temperature, highest first</label>
+        <input id="tempDescCheckbox" type="checkbox" ng-model="tempDesc" ng-checked="true"/>
+        <div class="details" ng-show="city">
+            <p>Temperature: {{selectedTemp}} °C</p>
+            <p>Range: {{tempMin}} °C to {{tempMax}} °C</p>
+            <p>Longitude: {{longitude}} °{{WE}}</p>
+            <p>Latitude: {{latitude}} °{{SN}}</p>
+            <img src="{{icon}}" alt="Weather icon"/>
+            <p>Conditions: {{conditions}}</p>
+            <p>Atmospheric Pressure: {{pressure}} hPa</p>
+            <p>Humidity: {{humidity}} %</p>
+        </div>
     </div>
     <!-- Third Party -->
-    <script src="scripts/angular.js" type="text/javascript"/>
-    <!-- <script src="https://code.angularjs.org/1.2.9/angular-resource.js" type="text/javascript"></script> -->
+    <script src="scripts/angular.js" type="text/javascript"></script>
     <!-- local app -->
     <script src="app/config/build.js" type="text/javascript"></script>
     <script src="app/app.js" type="text/javascript"></script>

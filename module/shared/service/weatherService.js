@@ -2,9 +2,19 @@
 
 angular.module("sharedModule")
 	.factory("weatherService", [
-		function(){
+    "$http",
+		function($http){
 			var srv = {
-          getWeather: function(city){
+          getWeather: function(callback){
+
+            return $http({method: "JSONP", url: IG_Weather.weatherUrl})
+              .success(function(data){
+                callback(data);
+              })
+              .error(function(){
+                callback({error: "Error: GetWeather didn't return results"});   
+              });
+              
           }
 			}
 			return srv;
