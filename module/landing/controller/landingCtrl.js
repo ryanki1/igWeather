@@ -11,8 +11,11 @@ angular.module("landingModule")
           return celsiusTo2Places;  
         };
 
-        $scope.title = "landing page";
+        $scope.title = "Ink Global Weather";
         $scope.details = function(city) {
+          if (! city) {
+            return;    
+          }
           $scope.selectedTemp   = kelvinToCelsius(city.main.temp);
           $scope.tempMin        = kelvinToCelsius(city.main.temp_min);
           $scope.tempMax        = kelvinToCelsius(city.main.temp_max);

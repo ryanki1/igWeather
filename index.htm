@@ -10,9 +10,6 @@
 <body ng-app="igWeather">
     <div id="pageContainer" ng-controller="landingCtrl">
         <h1>{{title}}</h1>
-        <div class="inputGroup">
-            
-        </div>
         <select ng-model="city" ng-options="city.name for city in cities | orderBy:'main.temp':!tempDesc" ng-click="details(city)">
             <option value="">
                 Please select a city
@@ -20,12 +17,12 @@
         </select>
         <label for="tempDescCheckbox">Sort Cities by Temperature, highest first</label>
         <input id="tempDescCheckbox" type="checkbox" ng-model="tempDesc" ng-checked="true"/>
-        <div class="details" ng-show="city">
+        <div class="details" ng-if="city">
             <p>Temperature: {{selectedTemp}} °C</p>
             <p>Range: {{tempMin}} °C to {{tempMax}} °C</p>
             <p>Longitude: {{longitude}} °{{WE}}</p>
             <p>Latitude: {{latitude}} °{{SN}}</p>
-            <img src="{{icon}}" alt="Weather icon"/>
+            <img ng-src="{{icon}}" alt="Weather icon"/>
             <p>Conditions: {{conditions}}</p>
             <p>Atmospheric Pressure: {{pressure}} hPa</p>
             <p>Humidity: {{humidity}} %</p>
