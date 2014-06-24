@@ -1,7 +1,7 @@
 name: Ink Global Weather
 title: Baked with Awestruct
 org: Ink Global
-base_url: 'http://ryanki1.github.io'
+base_url: 'http://ryanki1.github.io/igWeather'
 deploy: 
 	host: github_pages
 	branch: gh-pages
